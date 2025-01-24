@@ -4,10 +4,12 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.graphics.Typeface;
 import android.util.Log;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -48,7 +50,20 @@ public class MainActivity extends AppCompatActivity {
         fetchRandomQuote();
 
         // Button click listener to fetch a new quote
-        generateButton.setOnClickListener(view -> fetchRandomQuote());
+        generateButton.setOnClickListener(view -> {
+            // Start button press animation
+            view.animate()
+                            .scaleX(0.85f) // Scale down to 85%
+                            .scaleY(0.85f)
+                            .setDuration(100) // Animation duration (100ms)
+                            .withEndAction(() -> {
+                                // Reverse animation to original size
+                                view.animate().scaleX(1f).scaleY(1f).setDuration(100);
+                                // Fetch random quote after animation
+                                fetchRandomQuote();
+                            })
+                            .start();
+        });
     }
 
     private void fetchRandomQuote() {
