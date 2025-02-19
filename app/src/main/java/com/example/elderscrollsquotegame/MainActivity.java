@@ -43,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder()
                 //.baseUrl("http://localhost:3000/")  // Replace with your Node.js API URL
                 //.baseUrl("http://10.0.2.2:3000/")  // Use 10.0.2.2 for emulator access
-                .baseUrl("http://192.168.0.5:3000/") // Use for phone testing
+                //.baseUrl("http://192.168.0.5:3000/") // Use for phone testing
+                .baseUrl("https://elder-scrolls-quote-generator-api.onrender.com/")  // Render's base URL
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
