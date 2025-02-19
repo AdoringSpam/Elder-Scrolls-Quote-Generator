@@ -25,18 +25,7 @@ public class Quote {
     public String getGame() {
         return game;
     }
-    // Set functions
-    //public void setText(String text) {
-        //this.text = text;
-    //}
 
-    //public void setSource(String source) {
-        //this.source = source;
-    //}
-
-    //public void setGame(String game) {
-        //this.game = game;
-    //}
 
     @NonNull
     @Override

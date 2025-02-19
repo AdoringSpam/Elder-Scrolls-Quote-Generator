@@ -9,10 +9,6 @@ import android.util.Log;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -41,16 +37,11 @@ public class MainActivity extends AppCompatActivity {
         titleTextView = findViewById(R.id.titleTextView);
         // Set up Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                //.baseUrl("http://localhost:3000/")  // Replace with your Node.js API URL
-                //.baseUrl("http://10.0.2.2:3000/")  // Use 10.0.2.2 for emulator access
-                //.baseUrl("http://192.168.0.5:3000/") // Use for phone testing
                 .baseUrl("https://elder-scrolls-quote-generator-api.onrender.com/")  // Render's base URL
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         service = retrofit.create(QuoteService.class);
-        // Initial quote fetch
-        //fetchRandomQuote();
         // Fetch all Quotes from the API
         fetchAllQuotes();
 
@@ -64,35 +55,13 @@ public class MainActivity extends AppCompatActivity {
                             .withEndAction(() -> {
                                 // Reverse animation to original size
                                 view.animate().scaleX(1f).scaleY(1f).setDuration(100);
-                                // Fetch random quote after animation
-                                //fetchRandomQuote();
+                                // Show random quote after animation
                                 showNextQuote();
                             })
                             .start();
         });
     }
 
-   // private void fetchRandomQuote() {
-      //  service.getRandomQuote().enqueue(new Callback<Quote>() {
-           // @SuppressLint("SetTextI18n")
-           // @Override
-           // public void onResponse(@NonNull Call<Quote> call, @NonNull Response<Quote> response) {
-               // if (response.isSuccessful() && response.body() != null) {
-                  //  Quote quote = response.body();
-                   // quoteTextView.setText(quote.toString());
-                //} else {
-                //    quoteTextView.setText("Failed to get quote");
-                //}
-            //}
-
-            //@SuppressLint("SetTextI18n")
-            //@Override
-            //public void onFailure(@NonNull Call<Quote> call, @NonNull Throwable t) {
-                //Log.e("MainActivity", "Error fetching quote", t);
-                //quoteTextView.setText("Error fetching quote");
-            //}
-        //});
-    //}
     private void fetchAllQuotes() {
         service.getAllQuotes().enqueue(new Callback<List<Quote>>() {
             @Override
@@ -136,9 +105,5 @@ private void showNextQuote() {
         shuffleQuotes();
     }
 }
-
-
-
-
 }
 
