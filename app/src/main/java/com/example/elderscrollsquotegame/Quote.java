@@ -41,6 +41,7 @@ public class Quote {
     @NonNull
     @Override
     public String toString() {
-        return "\"" + text + "\" - " + source + " (" + game + ")";
+        //return "\"" + text + "\" - " + source + " (" + game + ")";
+        return "Text: \"" + text + "\"\nSource: \"" + source + "\"\nGame: \"" + game + "\"";
     }
 }

@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView quoteTextView;
     private Button generateButton;
+    private TextView titleTextView;
     private QuoteService service;
 
     @Override
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         //});
         quoteTextView = findViewById(R.id.quoteTextView);
         generateButton = findViewById(R.id.generateButton);
+        titleTextView = findViewById(R.id.titleTextView);
         // Set up Retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 //.baseUrl("http://localhost:3000/")  // Replace with your Node.js API URL
