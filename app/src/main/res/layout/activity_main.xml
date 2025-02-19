@@ -30,6 +30,7 @@
         android:layout_below="@id/quoteTextView"
         android:layout_centerHorizontal="true"
         android:text="What Else Do the Scrolls Tell Of?"
+        android:textStyle="bold"
         android:fontFamily="@font/es_font"
         android:textColor="#000000"
         android:backgroundTint="#8B0000"
